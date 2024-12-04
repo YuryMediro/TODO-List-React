@@ -4,15 +4,11 @@ import { Header } from '../../components/Header/Header'
 import { TodoPanel } from '../../components/TodoPanel/TodoPanel'
 import { AddTodoParams, Todo } from '../../types/Todo'
 import { TodoList } from '../../components/TodoList/TodoList'
-
-const TASK_TODO_LIST = [
-	{ id: 1, name: 'task1', description: 'description 1', checked: false },
-	{ id: 2, name: 'task2', description: 'description 2', checked: true },
-	{ id: 3, name: 'task3', description: 'description 3', checked: false },
-]
+import { TASK_TODO_LIST } from '../../features/TodoList/TaskTodoList'
 
 export const App = () => {
 	const [todos, setTodos] = useState<Todo[]>(TASK_TODO_LIST)
+	const [todoIdForEdit, setTodoIdForEdit] = useState<Todo['id']>(Number)
 
 	const addTodo = ({ name, description }: AddTodoParams): void => {
 		const newId = Date.now() // Генерация уникального ID
@@ -21,17 +17,17 @@ export const App = () => {
 
 	const checkTodo = (id: Todo['id']) => {
 		setTodos(
-			todos.map(todo => {
-				if (todo.id === id) {
-					return { ...todo, checked: !todo.checked }
-				}
-				return todo
-			})
+			todos.map(todo =>
+				todo.id === id ? { ...todo, checked: !todo.checked } : todo
+			)
 		)
 	}
-
 	const deleteTodo = (id: Todo['id']) => {
 		setTodos(todos.filter(todo => todo.id !== id))
+	}
+
+	const selectTodoIdForEdit = (id: Todo['id']) => {
+		setTodoIdForEdit(id)
 	}
 
 	return (
@@ -39,7 +35,13 @@ export const App = () => {
 			<div className={s.wrapper_content}>
 				<Header todoCount={todos.length} />
 				<TodoPanel addTodo={addTodo} />
-				<TodoList todos={todos} checkTodo={checkTodo} deleteTodo={deleteTodo} />
+				<TodoList
+					todos={todos}
+					checkTodo={checkTodo}
+					deleteTodo={deleteTodo}
+					selectTodoIdForEdit={selectTodoIdForEdit}
+					todoIdForEdit={todoIdForEdit}
+				/>
 			</div>
 		</div>
 	)

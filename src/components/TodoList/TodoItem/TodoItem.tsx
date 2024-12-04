@@ -6,9 +6,15 @@ interface TodoItemProps {
 	todo: Todo
 	checkTodo: (id: Todo['id']) => void
 	deleteTodo: (id: Todo['id']) => void
+	selectTodoIdForEdit: (id: Todo['id']) => void
 }
 
-export const TodoItem = ({ todo, checkTodo, deleteTodo }: TodoItemProps) => {
+export const TodoItem = ({
+	todo,
+	checkTodo,
+	deleteTodo,
+	selectTodoIdForEdit,
+}: TodoItemProps) => {
 	return (
 		<div className={s.todo_item_container}>
 			<div>
@@ -25,7 +31,7 @@ export const TodoItem = ({ todo, checkTodo, deleteTodo }: TodoItemProps) => {
 				<div className={s.todo_item_description}>{todo.description}</div>
 			</div>
 			<div className={s.todo_item_button_container}>
-				<Button>Edit</Button>
+				<Button onClick={() => selectTodoIdForEdit(todo.id)}>Edit</Button>
 				<Button onClick={() => deleteTodo(todo.id)}>Delete</Button>
 			</div>
 		</div>
