@@ -3,6 +3,7 @@ import s from './App.module.css'
 import { Header } from '../../components/Header/Header'
 import { TodoPanel } from '../../components/TodoPanel/TodoPanel'
 import { AddTodoParams, Todo } from '../../types/Todo'
+import { TodoList } from '../../components/TodoList/TodoList'
 
 const TASK_TODO_LIST = [
 	{ id: 1, name: 'task1', description: 'description 1', checked: false },
@@ -13,15 +14,20 @@ const TASK_TODO_LIST = [
 export const App = () => {
 	const [todos, setTodos] = useState<Todo[]>(TASK_TODO_LIST)
 
-	// const test = new Date().getTime()
-
-	// console.log(test)
-
 	const addTodo = ({ name, description }: AddTodoParams): void => {
-		setTodos([
-			...todos,
-			{ id: todos[todos.length - 1].id + 1, description, name, checked: false },
-		])
+		const newId = Date.now() // Генерация уникального ID
+		setTodos([...todos, { id: newId, description, name, checked: false }])
+	}
+
+	const checkTodo = (id: Todo['id']) => {
+		setTodos(
+			todos.map(todo => {
+				if (todo.id === id) {
+					return { ...todo, checked: !todo.checked }
+				}
+				return todo
+			})
+		)
 	}
 
 	return (
@@ -29,6 +35,7 @@ export const App = () => {
 			<div className={s.wrapper_content}>
 				<Header todoCount={todos.length} />
 				<TodoPanel addTodo={addTodo} />
+				<TodoList todos={todos} checkTodo={checkTodo} />
 			</div>
 		</div>
 	)
