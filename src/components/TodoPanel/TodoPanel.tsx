@@ -1,39 +1,42 @@
-import React, { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import s from './TodoPanel.module.css'
 import { Button } from '../Button/Button'
+import { AddTodoParams } from '../../types/Todo'
 
 const TODO_ITEM = {
 	name: '',
 	description: '',
 }
-type Todo = {
-	id: number
-	name: string
-	description: string
-	checked: boolean
-}
 
 interface TodoPanelProps {
-	addTodo: ({ name, description }: Omit<Todo, 'id' | 'checked'>) => void
+	addTodo: ({ name, description }: AddTodoParams) => void
 }
 
-export const TodoPanel: React.FC<TodoPanelProps> = ({ addTodo }) => {
+export const TodoPanel = ({ addTodo }: TodoPanelProps) => {
 	const [todo, setTodo] = useState(TODO_ITEM)
 
-	const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		const { name, value } = event.target //с помощью деструктуризации достаем name, value
+	const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+		const { name, value } = event.target // с помощью деструктуризации достаем name, value
 		setTodo({ ...todo, [name]: value })
 	}
 	const handleAddTodo = () => {
 		addTodo(todo)
 		setTodo(TODO_ITEM) // Сброс состояния после добавления
 	}
+
+	// form
 	return (
-		<div className={s.todo_panel_container}>
+		<form
+			className={s.todo_panel_container}
+			onSubmit={e => {
+				e.preventDefault()
+				handleAddTodo()
+			}}
+		>
 			<div className={s.fields_container}>
 				<div className={s.field_container}>
 					<label>
-						<div>name</div>
+						<div className={s.name_todo}>Name</div>
 						<input
 							placeholder='Input your name...'
 							type='text'
@@ -46,7 +49,7 @@ export const TodoPanel: React.FC<TodoPanelProps> = ({ addTodo }) => {
 				</div>
 				<div className={s.field_container}>
 					<label>
-						<div>description</div>
+						<div className={s.name_todo}>Description</div>
 						<input
 							placeholder='Input your note...'
 							type='text'
@@ -59,8 +62,8 @@ export const TodoPanel: React.FC<TodoPanelProps> = ({ addTodo }) => {
 				</div>
 			</div>
 			<div className={s.button_container}>
-				<Button onClick={handleAddTodo}>APPLY</Button>
+				<Button type='submit'>APPLY</Button>
 			</div>
-		</div>
+		</form>
 	)
 }

@@ -16,12 +16,10 @@
 	display: flex;
 	justify-content: center;
 	align-content: center;
-	
 }
 
 .wrapper_content {
 	display: flex;
 	flex-direction: column;
 	width: 500px;
-	
 }

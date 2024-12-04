@@ -1,12 +1,11 @@
-import React from 'react'
+import { ButtonHTMLAttributes } from 'react'
 import s from './Button.module.css'
 
-interface ButtonProps {
-	onClick: React.MouseEventHandler<HTMLButtonElement>
-	children: React.ReactNode
-}
+type ButtonProps = {} & ButtonHTMLAttributes<HTMLButtonElement>
 
-export const Button: React.FC<ButtonProps> = ({ onClick, children, }) => {
+// Поменять типы на которые я скину
+
+export const Button = ({ onClick, children }: ButtonProps) => {
 	return (
 		<button className={s.button} onClick={onClick}>
 			{children}
