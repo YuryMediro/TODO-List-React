@@ -5,9 +5,10 @@ import s from './TodoItem.module.css'
 interface TodoItemProps {
 	todo: Todo
 	checkTodo: (id: Todo['id']) => void
+	deleteTodo: (id: Todo['id']) => void
 }
 
-export const TodoItem = ({ todo, checkTodo }: TodoItemProps) => {
+export const TodoItem = ({ todo, checkTodo, deleteTodo }: TodoItemProps) => {
 	return (
 		<div className={s.todo_item_container}>
 			<div>
@@ -16,16 +17,16 @@ export const TodoItem = ({ todo, checkTodo }: TodoItemProps) => {
 						opacity: todo.checked ? 0.5 : 1,
 						textDecoration: todo.checked ? 'line-through' : 'none',
 					}}
-					className={s.todo_item_title}
+					className={s.todo_item_name}
 					onClick={() => checkTodo(todo.id)}
 				>
 					{todo.name}
 				</div>
-				<div className={s.todo_item_title}>{todo.description}</div>
+				<div className={s.todo_item_description}>{todo.description}</div>
 			</div>
 			<div className={s.todo_item_button_container}>
 				<Button>Edit</Button>
-				<Button>Delete</Button>
+				<Button onClick={() => deleteTodo(todo.id)}>Delete</Button>
 			</div>
 		</div>
 	)

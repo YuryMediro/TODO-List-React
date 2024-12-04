@@ -6,15 +6,16 @@
 	border-radius: 5px;
 }
 
-.todo_item_title {
-	font-size: 25px;
+.todo_item_name {
+	font-size: 27px;
+	line-height: 20px;
 	cursor: pointer;
-	font-weight: 600;
+	font-weight: 500;
 	margin-bottom: 15px;
 }
 
 .todo_item_description {
-	font-size: 15px;
+	font-size: 17px;
 	margin-bottom: 15px;
 }
 

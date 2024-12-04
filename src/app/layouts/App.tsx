@@ -30,12 +30,16 @@ export const App = () => {
 		)
 	}
 
+	const deleteTodo = (id: Todo['id']) => {
+		setTodos(todos.filter(todo => todo.id !== id))
+	}
+
 	return (
 		<div className={s.app_wrapper}>
 			<div className={s.wrapper_content}>
 				<Header todoCount={todos.length} />
 				<TodoPanel addTodo={addTodo} />
-				<TodoList todos={todos} checkTodo={checkTodo} />
+				<TodoList todos={todos} checkTodo={checkTodo} deleteTodo={deleteTodo} />
 			</div>
 		</div>
 	)
