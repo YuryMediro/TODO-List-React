@@ -31,8 +31,8 @@ export const TodoItem = ({
 				<div className={s.todo_item_description}>{todo.description}</div>
 			</div>
 			<div className={s.todo_item_button_container}>
-				<Button onClick={() => selectTodoIdForEdit(todo.id)}>Edit</Button>
-				<Button onClick={() => deleteTodo(todo.id)}>Delete</Button>
+				<Button onClick={() => selectTodoIdForEdit(todo.id)}>EDIT</Button>
+				<Button onClick={() => deleteTodo(todo.id)}>DELETE</Button>
 			</div>
 		</div>
 	)

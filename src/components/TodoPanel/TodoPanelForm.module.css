@@ -1,0 +1,60 @@
+.todo_panel_container {
+	background-color: #252525;
+	margin-bottom: 15px;
+	width: 100%;
+	padding: 25px 20px;
+	border-radius: 5px;
+}
+
+.fields_container {
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+}
+
+.field_container {
+	width: 100%;
+}
+
+.field_container label {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	font-size: 15px;
+	color: #f7f7f7;
+}
+
+.field_container input {
+	font-size: 15px;
+	padding: 10px 5px;
+	border-radius: 5px;
+	border: 1px solid #f7f7f7;
+	background-color: #252525;
+}
+input[placeholder='Input your note...'] {
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 16px;
+	color: #f7f7f7;
+	background-color: #252525;
+}
+input[placeholder='Input your name...'] {
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 16px;
+	color: #f7f7f7;
+	background-color: #252525;
+}
+
+.button_container {
+	width: 100%;
+	text-align: right;
+	margin-top: 10px;
+}
+
+.name_todo {
+	color: #f7f7f7;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 20px;
+}

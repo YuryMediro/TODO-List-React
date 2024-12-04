@@ -1,12 +1,8 @@
 import { ChangeEvent, useState } from 'react'
-import s from './TodoPanel.module.css'
+import s from './TodoPanelForm.module.css'
 import { Button } from '../Button/Button'
 import { AddTodoParams } from '../../types/Todo'
-
-const TODO_ITEM = {
-	name: '',
-	description: '',
-}
+import { TODO_ITEM } from '../../features/TodoPanelItem/TodoItem'
 
 interface TodoPanelProps {
 	addTodo: ({ name, description }: AddTodoParams) => void

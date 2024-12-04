@@ -1,8 +1,8 @@
-.todo_panel_container {
-	background-color: #252525;
+.form {
+	background-color: #f7f7f7;
 	margin-bottom: 15px;
 	width: 100%;
-	padding: 25px 20px;
+	padding: 24px 20px;
 	border-radius: 5px;
 }
 
@@ -28,22 +28,22 @@
 	font-size: 15px;
 	padding: 10px 5px;
 	border-radius: 5px;
-	border: 1px solid #f7f7f7;
-	background-color: #252525;
+	border: 1px solid #252525;
+	background-color: #f7f7f7;
 }
-input[placeholder='Input your note...'] {
+input[placeholder='Update your note...'] {
 	font-size: 14px;
 	font-weight: 500;
 	line-height: 16px;
-	color: var(--placeholder-text);
-	background-color: var(--input-background-color);
+	color: #252525;
+	background-color: #f7f7f7;
 }
-input[placeholder='Input your name...'] {
+input[placeholder='Update your name...'] {
 	font-size: 14px;
 	font-weight: 500;
 	line-height: 16px;
-	color: var(--placeholder-text);
-	background-color: var(--input-background-color);
+	color: #252525;
+	background-color: #f7f7f7;
 }
 
 .button_container {
@@ -53,7 +53,7 @@ input[placeholder='Input your name...'] {
 }
 
 .name_todo {
-	color: #f7f7f7;
+	color: #252525;
 	font-weight: 500;
 	font-size: 18px;
 	line-height: 20px;

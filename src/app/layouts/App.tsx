@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import s from './App.module.css'
 import { Header } from '../../components/Header/Header'
-import { TodoPanel } from '../../components/TodoPanel/TodoPanel'
+import { TodoPanel } from '../../components/TodoPanel/TodoPanelForm'
 import { AddTodoParams, Todo } from '../../types/Todo'
 import { TodoList } from '../../components/TodoList/TodoList'
 import { TASK_TODO_LIST } from '../../features/TodoList/TaskTodoList'

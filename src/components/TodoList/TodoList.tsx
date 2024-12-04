@@ -1,5 +1,5 @@
 import { Todo } from '../../types/Todo'
-import { TodoPanel } from '../TodoPanel/TodoPanel'
+import { EditTodoForm } from '../EditTodo/EditTodoForm'
 import { TodoItem } from './TodoItem/TodoItem'
 
 interface TodoListProps {
@@ -20,7 +20,7 @@ export const TodoList = ({
 	return (
 		<div>
 			{todos.map(todo => {
-				if (todo.id === todoIdForEdit) return <TodoPanel key={todo.id} />
+				if (todo.id === todoIdForEdit) return <EditTodoForm key={todo.id} />
 				return (
 					<TodoItem
 						key={todo.id}

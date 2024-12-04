@@ -6,4 +6,3 @@ export type Todo = {
 }
 
 export type AddTodoParams = Omit<Todo, 'id' | 'checked'>
-
